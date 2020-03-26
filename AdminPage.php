@@ -581,4 +581,3 @@ abstract class scbAdminPage {
 		return $links;
 	}
 }
-
