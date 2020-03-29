@@ -133,7 +133,6 @@ abstract class scbAdminPage {
 		}
 
 		add_action( 'admin_menu', array( $this, 'page_init' ), $this->args['admin_action_priority'] );
-		add_filter( 'contextual_help', array( $this, '_contextual_help' ), 10, 2 );
 
 		if ( $file ) {
 			$this->file = $file;
@@ -527,28 +526,6 @@ abstract class scbAdminPage {
 		if ( empty( $this->args['nonce'] ) ) {
 			$this->nonce = $this->args['page_slug'];
 		}
-	}
-
-	/**
-	 * Adds contextual help.
-	 *
-	 * @param string        $help
-	 * @param string|object $screen
-	 *
-	 * @return string
-	 */
-	public function _contextual_help( $help, $screen ) {
-		if ( is_object( $screen ) ) {
-			$screen = $screen->id;
-		}
-
-		$actual_help = $this->page_help();
-
-		if ( $screen == $this->pagehook && $actual_help ) {
-			return $actual_help;
-		}
-
-		return $help;
 	}
 
 	/**
