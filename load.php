@@ -39,10 +39,10 @@ class scbLoad4 {
 			add_action( 'activate_plugin',  array( __CLASS__, 'delayed_activation' ) );
 		}
 
-		if ( did_action( 'init' ) ) {
+		if ( did_action( 'plugins_loaded' ) ) {
 			self::load();
 		} else {
-			add_action( 'init', array( __CLASS__, 'load' ), 9, 0 );
+			add_action( 'plugins_loaded', array( __CLASS__, 'load' ), 9, 0 );
 		}
 	}
 
